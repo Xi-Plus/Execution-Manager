@@ -40,7 +40,7 @@ $query=new query;
 $query->dbname="xiplus_em";
 $query->table="task";
 $query->value=array(
-	array("name",$_POST["name"]),
+	array("path",$_POST["path"]),
 	array("source",$source),
 	array("token",$token)
 );

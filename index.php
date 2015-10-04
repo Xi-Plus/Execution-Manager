@@ -149,8 +149,8 @@ if($permission){
 	<form id="edit" action="add.php" method="post">
 		<table width="0" border="1" cellspacing="0" cellpadding="1">
 		<tr>
-			<td>name</td>
-			<td><input name="name" type="text" size="50" maxlength="255" required value="<?php echo ($permission?@$_GET["text"]:"No permission"); ?>" <?php echo ($permission?"":"disabled='disabled'"); ?>></td>
+			<td>path</td>
+			<td><input name="path" type="text" size="50" maxlength="255" required value="<?php echo ($permission?@$_GET["text"]:"No permission"); ?>" <?php echo ($permission?"":"disabled='disabled'"); ?>></td>
 		</tr>
 		<tr>
 			<td>code</td>
