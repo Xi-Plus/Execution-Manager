@@ -21,6 +21,14 @@ foreach($tasklist as $task){
 	if($isrun){
 		echo " Yes\n";
 		exec("php ".$task["path"]);
+		$query=new query;
+		$query->dbname="xiplus_em";
+		$query->table="log_task";
+		$query->value=array(
+			array("text",basename($task["path"])),
+			array("time",date("Y-m-d H:i:s"))
+		);
+		INSERT($query);
 	}else echo " No\n";
 }
 

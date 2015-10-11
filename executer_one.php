@@ -15,13 +15,21 @@ $query->where=array("token",$_POST["token"]);
 $task=fetchone(SELECT($query));
 
 exec("php ".$task["path"]);
-?><hr><a href="./">Back to homepage.</a><?php
+$query=new query;
+$query->dbname="xiplus_em";
+$query->table="log_task";
+$query->value=array(
+	array("time",date("Y-m-d H:i:s")),
+	array("text",basename($task["path"]))
+);
+INSERT($query);
 $query=new query;
 $query->dbname="xiplus_em";
 $query->table="log_run";
 $query->value=array(
 	array("time",date("Y-m-d H:i:s")),
-	array("text","one(".$task["path"].")"),
+	array("text","one(".basename($task["path"]).")"),
 );
 INSERT($query);
 ?>
+<hr><a href="./">Back to homepage.</a>
