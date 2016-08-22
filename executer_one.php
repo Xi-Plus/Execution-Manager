@@ -6,7 +6,7 @@ if(!checkpermission(true)){
 	exit;
 }
 date_default_timezone_set('Asia/Taipei');
-require_once(__DIR__."/../function/sql/sql.php");
+require_once(__DIR__."/function/SQL-function/sql.php");
 
 $query=new query;
 $query->dbname="xiplus_em";

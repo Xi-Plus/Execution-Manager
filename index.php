@@ -1,7 +1,7 @@
 <html>
 <?php
 ini_set('display_errors',1);
-require_once(__DIR__."/../function/sql/sql.php");
+require_once(__DIR__."/function/SQL-function/sql.php");
 require_once(__DIR__."/function/checkpermission.php");
 $permission=checkpermission();
 ?>

@@ -4,7 +4,7 @@ if(!checkpermission(true)){
 	echo "No permission.";
 	exit;
 }
-require_once(__DIR__."/../function/sql/sql.php");
+require_once(__DIR__."/function/SQL-function/sql.php");
 
 $rep=['0','1','2','3','4','5','6','7','8','9','(',')','<','>','=','!'];
 $rep2=['+','-','/','*','%','&','|'];

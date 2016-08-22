@@ -4,7 +4,7 @@ if(!checkpermission(true)){
 	echo "No permission.";
 	exit;
 }
-require_once(__DIR__."/../function/sql/sql.php");
+require_once(__DIR__."/function/SQL-function/sql.php");
 
 $query=new query;
 $query->dbname="xiplus_em";

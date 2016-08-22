@@ -5,7 +5,7 @@ if(PHP_SAPI!="cli"){
 	exit;
 }
 date_default_timezone_set('Asia/Taipei');
-require_once(__DIR__."/../function/sql/sql.php");
+require_once(__DIR__."/function/SQL-function/sql.php");
 
 $posttime=time();
 
