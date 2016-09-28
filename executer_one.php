@@ -14,7 +14,9 @@ $query->table="task";
 $query->where=array("token",$_POST["token"]);
 $task=fetchone(SELECT($query));
 
-exec("php ".$task["path"]);
+exec("php ".$task["path"], $output);
+mkdir(__DIR__."/log/".$task["token"]);
+file_put_contents(__DIR__."/log/".$task["token"]."/".date("Y-m-d-H-i-s").".log", implode("\n", $output));
 $query=new query;
 $query->dbname="xiplus_em";
 $query->table="log_task";
