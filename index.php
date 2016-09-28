@@ -32,6 +32,7 @@ if($permission){
 </form>
 <table width="0" border="1" cellspacing="0" cellpadding="3">
 	<tr>
+		<td>token</td>
 		<td>path</td>
 		<td>code</td>
 		<td>status</td>
@@ -50,6 +51,7 @@ if($permission){
 		foreach($tasklist as $task){
 	?>
 	<tr>
+		<td><?php echo substr($task["token"], 0, 7); ?></td>
 		<td><?php echo $task["path"]; ?></td>
 		<td><?php echo $task["source"]; ?></td>
 		<td><?php echo $isrun[$task["isrun"]]; ?></td>
