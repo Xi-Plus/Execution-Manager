@@ -52,7 +52,12 @@ if($permission){
 	?>
 	<tr>
 		<td><?php echo substr($task["token"], 0, 7); ?></td>
-		<td><?php echo $task["path"]; ?></td>
+		<td><?php
+			echo $task["path"];
+			if (!file_exists($task["path"])) {
+				?> <span style="color: red;">找不到檔案</span><?php
+			}
+		?></td>
 		<td><?php echo $task["source"]; ?></td>
 		<td><?php echo $isrun[$task["isrun"]]; ?></td>
 		<td>
