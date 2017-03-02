@@ -3,6 +3,7 @@
 ini_set('display_errors',1);
 require_once(__DIR__."/function/SQL-function/sql.php");
 require_once(__DIR__."/function/checkpermission.php");
+require_once(__DIR__."/config/config.php");
 $permission=checkpermission();
 ?>
 <head>
@@ -53,7 +54,7 @@ if($permission){
 	<tr>
 		<td><?php echo substr($task["token"], 0, 7); ?></td>
 		<td><?php
-			echo $task["path"];
+			echo str_replace($pathreplace, "", $task["path"]);
 			if (!file_exists($task["path"])) {
 				?> <span style="color: red;">找不到檔案</span><?php
 			}

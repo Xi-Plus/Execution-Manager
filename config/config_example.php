@@ -1,5 +1,7 @@
 <?php
-$password=array(
+$password = array(
 	"user"=>"password"
-)
-?>
+);
+$pathreplace = array(
+	"/home/username/public_html"
+);
