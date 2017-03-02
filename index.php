@@ -1,9 +1,9 @@
 <html>
 <?php
 ini_set('display_errors',1);
-require_once(__DIR__."/function/SQL-function/sql.php");
-require_once(__DIR__."/function/checkpermission.php");
-require_once(__DIR__."/config/config.php");
+require(__DIR__."/config/config.php");
+require(__DIR__."/function/SQL-function/sql.php");
+require(__DIR__."/function/checkpermission.php");
 $permission=checkpermission();
 ?>
 <head>
@@ -214,7 +214,7 @@ if($permission){
 
 <hr>
 <?php
-include_once("../function/developer.php");
+include("../function/developer.php");
 ?>
 </center>
 </body>

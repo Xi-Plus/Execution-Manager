@@ -1,7 +1,7 @@
 <?php
 ini_set("display_errors",1);
 function checkpermission($gotologin=false){
-	require_once(__DIR__."/../config/config.php");
+	require(__DIR__."/../config/config.php");
 	if(PHP_SAPI=="cli"){
 		return true;
 	}else if(isset($_SERVER["PHP_AUTH_USER"])&&isset($_SERVER["PHP_AUTH_PW"])&&isset($password[$_SERVER["PHP_AUTH_USER"]])&&$password[$_SERVER["PHP_AUTH_USER"]]==$_SERVER["PHP_AUTH_PW"]){
