@@ -37,7 +37,13 @@ if($permission){
 		<td>path</td>
 		<td>code</td>
 		<td>status</td>
+		<?php
+		if($permission){
+		?>
 		<td>edit</td>
+		<?php
+		}
+		?>
 	</tr>
 	<?php
 		$isrun=array("Off","On");
@@ -61,18 +67,18 @@ if($permission){
 		?></td>
 		<td><?php echo $task["source"]; ?></td>
 		<td><?php echo $isrun[$task["isrun"]]; ?></td>
+		<?php
+		if($permission){
+		?>
 		<td>
-			<?php
-			if($permission){
-			?>
 			<button onClick="if(!confirm('Run?'))return false;executetoken.value='<?php echo $task["token"]; ?>';executeform.submit();">Run</button>
 			<button onClick="if(!confirm('<?php echo $isrun[1-$task["isrun"]]; ?>?'))return false;isruntoken.value='<?php echo $task["token"]; ?>';isrun.value='<?php echo (1-$task["isrun"]); ?>';isrunform.submit();"><?php echo $isrun[1-$task["isrun"]]; ?></button>
 			<button onClick="path.value='<?php echo $task["path"]; ?>';source.value='<?php echo $task["source"]; ?>';token.value='<?php echo $task["token"]; ?>';">Edit</button>
 			<button onClick="if(!confirm('Del?'))return false;deltoken.value='<?php echo $task["token"]; ?>';delform.submit();">Del</button>
-			<?php
-			}
-			?>
 		</td>
+		<?php
+		}
+		?>
 	</tr>
 	<?php
 		}
@@ -153,6 +159,9 @@ if($permission){
 </table>
 <a href="http://php.net/manual/zh/function.date.php" target="_blank">PHP date()</a>
 </td>
+<?php
+if($permission){
+?>
 <td align="center" valign="top">
 	<h3>Add/Edit</h3>
 	<form action="add.php" method="post">
@@ -211,13 +220,11 @@ if($permission){
 		<button type="submit" name="action" value="edit" onClick="if(check(source.value)==false)return false;" <?php echo ($permission?"":"disabled='disabled'"); ?>>Edit</button>
 	</form>
 </td>
+<?php
+}
+?>
 </tr>
 </table>
-
-<hr>
-<?php
-include("../function/developer.php");
-?>
 </center>
 </body>
 </html>
