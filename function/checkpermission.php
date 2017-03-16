@@ -15,6 +15,6 @@ function checkpermission($gotologin=false){
 	}
 }
 function logouturl(){
-	echo '<a href="http://logout@'.$_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"].'">log out</a>';
+	echo '<a href="//logout@'.$_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"].'">log out</a>';
 }
 ?>
