@@ -36,14 +36,29 @@ $source=preg_replace("/(\D)0+([1-9])/","$1$2",$source);
 $source=preg_replace("/^0+([1-9])/","$1",$source);
 
 $token=md5(uniqid(rand(),true));
-$query=new query;
-$query->dbname="xiplus_em";
-$query->table="task";
-$query->value=array(
-	array("path",$_POST["path"]),
-	array("source",$source),
-	array("token",$token)
-);
-INSERT($query);
+if ($_POST["action"] == "add") {
+	$query=new query;
+	$query->dbname="xiplus_em";
+	$query->table="task";
+	$query->value=array(
+		array("path",$_POST["path"]),
+		array("source",$source),
+		array("token",$token)
+	);
+	INSERT($query);
+} else if ($_POST["action"] == "edit") {
+	$query=new query;
+	$query->dbname="xiplus_em";
+	$query->table="task";
+	$query->value=array(
+		array("source",$source)
+	);
+	$query->where=array(
+		array("token",$_POST["token"])
+	);
+	UPDATE($query);
+} else {
+	exit("Something went worng.");
+}
 header('Location: ./');
 ?>

@@ -65,8 +65,9 @@ if($permission){
 			<?php
 			if($permission){
 			?>
-			<button onClick="if(!confirm('<?php echo $isrun[1-$task["isrun"]]; ?>?'))return false;isruntoken.value='<?php echo $task["token"]; ?>';isrun.value='<?php echo (1-$task["isrun"]); ?>';isrunform.submit();"><?php echo $isrun[1-$task["isrun"]]; ?></button>
 			<button onClick="if(!confirm('Run?'))return false;executetoken.value='<?php echo $task["token"]; ?>';executeform.submit();">Run</button>
+			<button onClick="if(!confirm('<?php echo $isrun[1-$task["isrun"]]; ?>?'))return false;isruntoken.value='<?php echo $task["token"]; ?>';isrun.value='<?php echo (1-$task["isrun"]); ?>';isrunform.submit();"><?php echo $isrun[1-$task["isrun"]]; ?></button>
+			<button onClick="path.value='<?php echo $task["path"]; ?>';source.value='<?php echo $task["source"]; ?>';token.value='<?php echo $task["token"]; ?>';">Edit</button>
 			<button onClick="if(!confirm('Del?'))return false;deltoken.value='<?php echo $task["token"]; ?>';delform.submit();">Del</button>
 			<?php
 			}
@@ -153,22 +154,21 @@ if($permission){
 <a href="http://php.net/manual/zh/function.date.php" target="_blank">PHP date()</a>
 </td>
 <td align="center" valign="top">
-	<h3>Add</h3>
-	<form id="edit" action="add.php" method="post">
+	<h3>Add/Edit</h3>
+	<form action="add.php" method="post">
 		<table width="0" border="1" cellspacing="0" cellpadding="1">
 		<tr>
 			<td>path</td>
-			<td><input name="path" type="text" size="50" maxlength="255" required value="<?php echo ($permission?@$_GET["text"]:"No permission"); ?>" <?php echo ($permission?"":"disabled='disabled'"); ?>></td>
+			<td><input name="path" id="path" type="text" size="50" maxlength="255" required value="<?php echo ($permission?@$_GET["text"]:"No permission"); ?>" <?php echo ($permission?"":"disabled='disabled'"); ?>></td>
 		</tr>
 		<tr>
 			<td>code</td>
-			<td><input name="source" type="text" id="normal_source" size="50" required value="<?php echo ($permission?@$_GET["source"]:"No permission"); ?>" <?php echo ($permission?"":"disabled='disabled'"); ?>></td>
+			<td><input name="source" id="source" type="text" size="50" required value="<?php echo ($permission?@$_GET["source"]:"No permission"); ?>" <?php echo ($permission?"":"disabled='disabled'"); ?>></td>
 		</tr>
 		</table>
 		<script>
 			var allow=['d','j','N','w','z','W','m','n','t','L','o','Y','y','g','G','h','H','i'];
-			function check(){
-				var text=normal_source.value;
+			function check(text){
 				text=text.replace(/0/g,"");
 				text=text.replace(/1/g,"");
 				text=text.replace(/2/g,"");
@@ -206,7 +206,9 @@ if($permission){
 				return true;
 			}
 		</script>
-		<input name="" type="submit" value="Add" onClick="if(check()==false)return false;" <?php echo ($permission?"":"disabled='disabled'"); ?>>
+		<input type="hidden" name="token" id="token">
+		<button type="submit" name="action" value="add" onClick="if(check(source.value)==false)return false;" <?php echo ($permission?"":"disabled='disabled'"); ?>>Add</button>
+		<button type="submit" name="action" value="edit" onClick="if(check(source.value)==false)return false;" <?php echo ($permission?"":"disabled='disabled'"); ?>>Edit</button>
 	</form>
 </td>
 </tr>
