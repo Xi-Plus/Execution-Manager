@@ -1,5 +1,4 @@
 <?php
-ini_set("display_errors",1);
 function checkpermission($gotologin=false){
 	require(__DIR__."/../config/config.php");
 	if(PHP_SAPI=="cli"){
@@ -17,4 +16,3 @@ function checkpermission($gotologin=false){
 function logouturl(){
 	echo '<a href="//logout@'.$_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"].'">log out</a>';
 }
-?>
