@@ -5,3 +5,4 @@ $password = array(
 $pathreplace = array(
 	"/home/username/public_html"
 );
+$logkeep = 86400 * 30;
