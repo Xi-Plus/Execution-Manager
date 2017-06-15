@@ -4,7 +4,7 @@ if(!checkpermission(true)){
 	echo "No permission.";
 	exit;
 }
-require(__DIR__."//config/config.php");
+require(__DIR__."/config/config.php");
 require_once(__DIR__."/function/SQL-function/sql.php");
 
 $query=new query;

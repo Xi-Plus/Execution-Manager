@@ -25,7 +25,7 @@ foreach($tasklist as $task){
 		$query->dbname="xiplus_em";
 		$query->table="log_task";
 		$query->value=array(
-			array("task",substr($task["token"], 0, 7)),
+			array("task",substr($task["name"], 0, 20)),
 			array("log",implode("\n", $output))
 		);
 		INSERT($query);

@@ -19,7 +19,7 @@ $query=new query;
 $query->dbname="xiplus_em";
 $query->table="log_task";
 $query->value=array(
-	array("task",basename($task["token"])),
+	array("task",substr($task["name"], 0, 20)),
 	array("log",implode("\n", $output))
 );
 INSERT($query);
@@ -27,7 +27,7 @@ $query=new query;
 $query->dbname="xiplus_em";
 $query->table="log_run";
 $query->value=array(
-	array("via","one ".substr($task["token"], 0, 7)),
+	array("via",substr("one ".$task["name"], 0, 20)),
 );
 INSERT($query);
 ?>

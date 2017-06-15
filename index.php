@@ -1,6 +1,5 @@
 <html>
 <?php
-ini_set('display_errors',1);
 require(__DIR__."/config/config.php");
 require(__DIR__."/function/SQL-function/sql.php");
 require(__DIR__."/function/checkpermission.php");
@@ -33,7 +32,7 @@ if($permission){
 </form>
 <table width="0" border="1" cellspacing="0" cellpadding="3">
 	<tr>
-		<td>token</td>
+		<td>name</td>
 		<td>path</td>
 		<td>code</td>
 		<td>status</td>
@@ -52,13 +51,13 @@ if($permission){
 		$query->table="task";
 		$query->order=array(
 			array("isrun","DESC"),
-			array("path")
+			array("name")
 		);
 		$tasklist=SELECT($query);
 		foreach($tasklist as $task){
 	?>
 	<tr>
-		<td><?php echo substr($task["token"], 0, 7); ?></td>
+		<td><?php echo $task["name"]; ?></td>
 		<td><?php
 			echo str_replace($pathreplace, "", $task["path"]);
 			if (!file_exists($task["path"])) {
@@ -73,7 +72,7 @@ if($permission){
 		<td>
 			<button onClick="if(!confirm('Run?'))return false;executetoken.value='<?php echo $task["token"]; ?>';executeform.submit();">Run</button>
 			<button onClick="if(!confirm('<?php echo $isrun[1-$task["isrun"]]; ?>?'))return false;isruntoken.value='<?php echo $task["token"]; ?>';isrun.value='<?php echo (1-$task["isrun"]); ?>';isrunform.submit();"><?php echo $isrun[1-$task["isrun"]]; ?></button>
-			<button onClick="path.value='<?php echo $task["path"]; ?>';source.value='<?php echo $task["source"]; ?>';token.value='<?php echo $task["token"]; ?>';">Edit</button>
+			<button onClick="tname.value='<?php echo $task["name"]; ?>';path.value='<?php echo $task["path"]; ?>';source.value='<?php echo $task["source"]; ?>';token.value='<?php echo $task["token"]; ?>';">Edit</button>
 			<button onClick="if(!confirm('Del?'))return false;deltoken.value='<?php echo $task["token"]; ?>';delform.submit();">Del</button>
 		</td>
 		<?php
@@ -166,6 +165,10 @@ if($permission){
 	<h3>Add/Edit</h3>
 	<form action="add.php" method="post">
 		<table width="0" border="1" cellspacing="0" cellpadding="1">
+		<tr>
+			<td>name</td>
+			<td><input name="name" id="tname" type="text" size="50" maxlength="20" value="<?php echo ($permission?@$_GET["name"]:"No permission"); ?>" <?php echo ($permission?"":"disabled='disabled'"); ?>></td>
+		</tr>
 		<tr>
 			<td>path</td>
 			<td><input name="path" id="path" type="text" size="50" maxlength="255" required value="<?php echo ($permission?@$_GET["text"]:"No permission"); ?>" <?php echo ($permission?"":"disabled='disabled'"); ?>></td>
