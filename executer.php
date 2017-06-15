@@ -26,7 +26,8 @@ foreach($tasklist as $task){
 		$query->table="log_task";
 		$query->value=array(
 			array("task",substr($task["name"], 0, 20)),
-			array("log",implode("\n", $output))
+			array("log",implode("\n", $output)),
+			array("hash",md5(uniqid(rand(), true)))
 		);
 		INSERT($query);
 		unset($output);

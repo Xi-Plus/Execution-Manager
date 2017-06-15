@@ -15,7 +15,8 @@ CREATE TABLE `log_run` (
 CREATE TABLE `log_task` (
   `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `task` varchar(20) NOT NULL,
-  `log` text
+  `log` text,
+  `hash` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `task` (
@@ -26,6 +27,9 @@ CREATE TABLE `task` (
   `token` char(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+
+ALTER TABLE `log_task`
+  ADD UNIQUE KEY `hash` (`hash`);
 
 ALTER TABLE `task`
   ADD UNIQUE KEY `token` (`token`);
