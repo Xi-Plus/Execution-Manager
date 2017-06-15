@@ -29,6 +29,7 @@ foreach($tasklist as $task){
 			array("log",implode("\n", $output))
 		);
 		INSERT($query);
+		unset($output);
 	}else echo " No\n";
 }
 
